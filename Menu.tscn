@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://HUD/HUD.tres" type="DynamicFont" id=1]
+[ext_resource path="res://HUD/HUD.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="YourScore" type="Label" parent="."]
+margin_left = 226.0
+margin_top = 178.0
+margin_right = 790.0
+margin_bottom = 248.0
+custom_fonts/font = ExtResource( 1 )
+text = "GAME NAME"
+align = 1
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 386.0
+margin_top = 305.0
+margin_right = 441.0
+margin_bottom = 325.0
+rect_scale = Vector2( 5, 5 )
+text = "Start"
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 389.0
+margin_top = 444.0
+margin_right = 444.0
+margin_bottom = 464.0
+rect_scale = Vector2( 5, 5 )
+text = "Quit"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
