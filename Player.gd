@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			velocity.y = jump_speed
 			print(2)
-		if  is_on_wall():
+		elif  is_on_wall():
 			velocity.y = jump_speed
-	move_and_slide(velocity)
+			print(3)
+	move_and_slide(velocity,Vector2.UP)
