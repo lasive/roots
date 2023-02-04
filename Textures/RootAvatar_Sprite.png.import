@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tilese_dirtt.png-e5dd82a4a77865ecdf8ec39c8d382beb.stex"
+path="res://.import/RootAvatar_Sprite.png-9b35d7f4c961123e5f931cec7904c30a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tilese_dirtt.png"
-dest_files=[ "res://.import/Tilese_dirtt.png-e5dd82a4a77865ecdf8ec39c8d382beb.stex" ]
+source_file="res://Textures/RootAvatar_Sprite.png"
+dest_files=[ "res://.import/RootAvatar_Sprite.png-9b35d7f4c961123e5f931cec7904c30a.stex" ]
 
 [params]
 

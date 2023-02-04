@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tilese_dirtt.png-e5dd82a4a77865ecdf8ec39c8d382beb.stex"
+path="res://.import/bg_grassTiles.png-40d76c792dab59921bf169fb6df34af1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Tilese_dirtt.png"
-dest_files=[ "res://.import/Tilese_dirtt.png-e5dd82a4a77865ecdf8ec39c8d382beb.stex" ]
+source_file="res://Textures/bg_grassTiles.png"
+dest_files=[ "res://.import/bg_grassTiles.png-40d76c792dab59921bf169fb6df34af1.stex" ]
 
 [params]
 
