@@ -47,9 +47,6 @@ margin_bottom = 360.0
 rect_min_size = Vector2( 740, 250 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="UserFileViewer" parent="." instance=ExtResource( 6 )]
 margin_top = 388.0
@@ -449,6 +446,7 @@ text = "Assert count"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="mouse_entered" from="TitleBar" to="." method="_on_TitleBar_mouse_entered"]
 [connection signal="mouse_exited" from="TitleBar" to="." method="_on_TitleBar_mouse_exited"]
 [connection signal="draw" from="TitleBar/Maximize" to="." method="_on_Maximize_draw"]
