@@ -3,7 +3,7 @@ var velocity = Vector2.ZERO
 export var speed = 50
 export var maxSpeedY = 5000
 export var maxSpeedX = 300
-export var jump_speed = -600
+export var jump_speed = -300
 export var gravity = 1000
 # Declare member variables here. Examples:
 # var a = 2
@@ -35,13 +35,20 @@ func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	velocity.y = min(velocity.y, maxSpeedY)
 	if is_on_floor():
-		velocity.y = 0
+		velocity.y = min(50, velocity.y)
 		
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = jump_speed
-			print(2)
 		elif  is_on_wall():
 			velocity.y = jump_speed
-			print(3)
 	move_and_slide(velocity,Vector2.UP)
+	
+	if Input.is_action_just_pressed("left_click"):
+		print(0)
+		var mouse_pos = get_viewport().get_mouse_position()
+		var tilemap = get_parent().get_node("TileMap")
+		var tile_pos = tilemap.world_to_map(mouse_pos)
+		var cell = tilemap.get_cellv(tile_pos)
+		print(tile_pos)
+		print(cell)
