@@ -33,21 +33,22 @@ func get_input(delta):
 		velocity.x = sign(velocity.x)*maxSpeedX
 		
 func _physics_process(delta: float) -> void:
-	get_input(delta)
-	
-	$E.hide()
-	
-	velocity.y += gravity * delta
-	velocity.y = min(velocity.y, maxSpeedY)
-	if is_on_floor():
-		velocity.y = min(50, velocity.y)
+	if not planted:
+		get_input(delta)
 		
-	if Input.is_action_just_pressed("jump"):
+		$E.hide()
+		
+		velocity.y += gravity * delta
+		velocity.y = min(velocity.y, maxSpeedY)
 		if is_on_floor():
-			velocity.y = jump_speed
-		elif  is_on_wall():
-			velocity.y = jump_speed
-	move_and_slide(velocity,Vector2.UP)
+			velocity.y = min(50, velocity.y)
+			
+		if Input.is_action_just_pressed("jump"):
+			if is_on_floor():
+				velocity.y = jump_speed
+			elif  is_on_wall():
+				velocity.y = jump_speed
+		move_and_slide(velocity,Vector2.UP)
 	if not planted:
 		if is_on_floor():
 			var tilemap = get_parent().get_node("TileMap")
