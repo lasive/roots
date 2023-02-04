@@ -6,6 +6,7 @@ export var maxSpeedX = 100
 export var jump_speed = -100
 export var gravity = 500
 var directionX = 1
+var planted = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -47,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		elif  is_on_wall():
 			velocity.y = jump_speed
 	move_and_slide(velocity,Vector2.UP)
-	if is_on_floor():
+	if is_on_floor() and not planted:
 		var tilemap = get_parent().get_node("TileMap")
 		var cell_size = tilemap.cell_size.x
 		var aproximate_position = Vector2(global_position.x + directionX*cell_size*1.5, global_position.y + cell_size)
@@ -68,7 +69,10 @@ func _physics_process(delta: float) -> void:
 		if plant_pos.x != 0:
 			$E.show()
 			$E.global_position = plant_pos
-
+	elif planted == true:
+		if Input.is_action_just_pressed("E"):
+			get_parent().deplant()
+			planted = false
 		
 func plant_seed(tilemap, pos) -> Vector2:
 	var cell_size = tilemap.cell_size.x
@@ -78,6 +82,7 @@ func plant_seed(tilemap, pos) -> Vector2:
 	var corrected_seed_pos = Vector2(seed_pos.x + cell_size/2, seed_pos.y + cell_size/2)
 	if Input.is_action_just_pressed("E"):
 		get_parent().plant_seed(corrected_seed_pos)
+		planted = true
 	#print(cell_pos)
 	return Vector2(seed_pos.x + cell_size/2, seed_pos.y - cell_size/2)
 #	if Input.is_action_just_pressed("left_click"):
