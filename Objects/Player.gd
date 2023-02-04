@@ -3,7 +3,7 @@ var velocity = Vector2.ZERO
 export var speed = 50
 export var maxSpeedY = 5000
 export var maxSpeedX = 300
-export var jump_speed = -600
+export var jump_speed = -300
 export var gravity = 1000
 # Declare member variables here. Examples:
 # var a = 2
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
 	velocity.y = min(velocity.y, maxSpeedY)
 	if is_on_floor():
-		velocity.y = 0
+		velocity.y = min(50, velocity.y)
 		
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
