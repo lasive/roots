@@ -5,31 +5,32 @@
 [ext_resource path="res://HUD/HUD.tres" type="DynamicFont" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 17.5, 17.5 )
+extents = Vector2( 7.5, 6 )
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( -0.400002, 0.600002 )
+scale = Vector2( 0.26875, 0.2375 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, -0.5 )
+position = Vector2( -0.299999, 0.200001 )
 shape = SubResource( 1 )
 
 [node name="letterE_R" type="Label" parent="."]
-margin_left = 22.0
-margin_right = 76.0
+margin_left = 10.0
+margin_right = 64.0
 margin_bottom = 67.0
-rect_scale = Vector2( 0.24, 0.24 )
+rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = ExtResource( 3 )
 text = "E"
 
 [node name="letterE_L" type="Label" parent="."]
-margin_left = -34.0
-margin_right = 20.0
+margin_left = -15.0
+margin_right = 39.0
 margin_bottom = 67.0
-rect_scale = Vector2( 0.24, 0.24 )
+rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = ExtResource( 3 )
 text = "E"
