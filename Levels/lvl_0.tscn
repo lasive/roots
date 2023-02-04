@@ -6,8 +6,18 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Particles2D2" type="Particles2D" parent="."]
+position = Vector2( 472, 185 )
+scale = Vector2( 4, 4 )
+amount = 3
+lifetime = 21.0
+randomness = 0.54
+fixed_fps = 11
+process_material = ExtResource( 2 )
+texture = ExtResource( 3 )
+
 [node name="Particles2D" type="Particles2D" parent="."]
-position = Vector2( 370, 462 )
+position = Vector2( 399, 408 )
 scale = Vector2( 4, 4 )
 amount = 3
 lifetime = 21.0
