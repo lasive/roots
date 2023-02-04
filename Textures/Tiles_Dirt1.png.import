@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg.png-6bd80ad3d5b859c5605e207eba31bb8b.stex"
+path="res://.import/Tiles_Dirt1.png-686746ee1f7264b8ca508782bc963bec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tilemaps/bg.png"
-dest_files=[ "res://.import/bg.png-6bd80ad3d5b859c5605e207eba31bb8b.stex" ]
+source_file="res://Textures/Tiles_Dirt1.png"
+dest_files=[ "res://.import/Tiles_Dirt1.png-686746ee1f7264b8ca508782bc963bec.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
