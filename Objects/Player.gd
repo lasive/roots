@@ -40,8 +40,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = jump_speed
-			print(2)
 		elif  is_on_wall():
 			velocity.y = jump_speed
-			print(3)
 	move_and_slide(velocity,Vector2.UP)
+	
+	if Input.is_action_just_pressed("left_click"):
+		print(0)
+		var mouse_pos = get_viewport().get_mouse_position()
+		var tilemap = get_parent().get_node("TileMap")
+		var tile_pos = tilemap.world_to_map(mouse_pos)
+		var cell = tilemap.get_cellv(tile_pos)
+		print(tile_pos)
+		print(cell)
