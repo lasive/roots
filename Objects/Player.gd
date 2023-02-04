@@ -59,14 +59,12 @@ func _physics_process(delta: float) -> void:
 			var cell = tilemap.get_cellv(tilemap.world_to_map(aproximate_position))
 			var cell_top = tilemap.get_cellv(tilemap.world_to_map(aproximate_position_top))
 			var cell_top_top = tilemap.get_cellv(tilemap.world_to_map(aproximate_position_top_top))
-			print(cell)
 			var plant_pos = Vector2.ZERO
 			if cell == 3 and cell_top == -1:
 				plant_pos = plant_seed(tilemap, aproximate_position)
 				
 			elif cell_top == 3 and cell_top_top == -1:
 				plant_pos = plant_seed(tilemap, aproximate_position_top)
-				print(plant_pos)
 			if plant_pos.x != 0:
 				$E.show()
 				$E.global_position = plant_pos
