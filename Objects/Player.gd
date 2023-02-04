@@ -50,14 +50,19 @@ func _physics_process(delta: float) -> void:
 	move_and_slide(velocity,Vector2.UP)
 	if is_on_floor():
 		var tilemap = get_parent().get_node("TileMap")
-		var aproximate_position = Vector2(global_position.x + directionX * 8, global_position.y + 4)
-		var tile_pos = tilemap.world_to_map(aproximate_position)
-		var cell = tilemap.get_cellv(tile_pos)
-		if cell == 0:
+		var aproximate_position = Vector2(global_position.x + directionX*16, global_position.y + 16)
+		draw_circle(aproximate_position, 2, Color.black)
+		var cell_pos = tilemap.world_to_map(aproximate_position)
+		#print(tile_pos)
+		var cell = tilemap.get_cellv(cell_pos)
+		if cell == 3:
 			
 			if Input.is_action_just_pressed("E"):
-				get_parent().plant_seed(aproximate_position)
-				print("ok")
+				var seed_pos = tilemap.map_to_world(cell_pos)
+				var cell_size = tilemap.cell_size.x
+				var corrected_seed_pos = Vector2(seed_pos.x + cell_size/2, seed_pos.y - cell_size/2)
+				get_parent().plant_seed(corrected_seed_pos)
+				print(cell_pos)
 			#print(cell)
 			if directionX >= 0:
 				$letterE_R.show()
