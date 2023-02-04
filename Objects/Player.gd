@@ -83,7 +83,7 @@ func plant_seed(tilemap, pos) -> Vector2:
 	var cell_pos = tilemap.world_to_map(pos)
 	var seed_pos = tilemap.map_to_world(cell_pos)
 	
-	var corrected_seed_pos = Vector2(seed_pos.x + cell_size/2, seed_pos.y + cell_size/2)
+	var corrected_seed_pos = Vector2(seed_pos.x + cell_size/2, seed_pos.y)
 	if Input.is_action_just_pressed("E"):
 		get_parent().plant_seed(corrected_seed_pos)
 		planted = true
