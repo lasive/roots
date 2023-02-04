@@ -34,8 +34,7 @@ func get_input(delta):
 func _physics_process(delta: float) -> void:
 	get_input(delta)
 	
-	$letterE_L.hide()
-	$letterE_R.hide()
+	$E.hide()
 	
 	velocity.y += gravity * delta
 	velocity.y = min(velocity.y, maxSpeedY)
@@ -50,27 +49,36 @@ func _physics_process(delta: float) -> void:
 	move_and_slide(velocity,Vector2.UP)
 	if is_on_floor():
 		var tilemap = get_parent().get_node("TileMap")
-		var aproximate_position = Vector2(global_position.x + directionX*16, global_position.y + 16)
-		draw_circle(aproximate_position, 2, Color.black)
-		var cell_pos = tilemap.world_to_map(aproximate_position)
-		#print(tile_pos)
-		var cell = tilemap.get_cellv(cell_pos)
-		if cell == 3:
-			
-			if Input.is_action_just_pressed("E"):
-				var seed_pos = tilemap.map_to_world(cell_pos)
-				var cell_size = tilemap.cell_size.x
-				var corrected_seed_pos = Vector2(seed_pos.x + cell_size/2, seed_pos.y - cell_size/2)
-				get_parent().plant_seed(corrected_seed_pos)
-				print(cell_pos)
-			#print(cell)
-			if directionX >= 0:
-				$letterE_R.show()
-			else:
-				$letterE_L.show()
+		var cell_size = tilemap.cell_size.x
+		var aproximate_position = Vector2(global_position.x + directionX*cell_size*1.5, global_position.y + cell_size)
+		var aproximate_position_top = Vector2(global_position.x + directionX*cell_size*1.5, global_position.y + cell_size - cell_size)
+		var aproximate_position_top_top = Vector2(global_position.x + directionX*cell_size*1.5, global_position.y + cell_size + cell_size)
+		
+		var cell = tilemap.get_cellv(tilemap.world_to_map(aproximate_position))
+		var cell_top = tilemap.get_cellv(tilemap.world_to_map(aproximate_position_top))
+		var cell_top_top = tilemap.get_cellv(tilemap.world_to_map(aproximate_position_top_top))
+		print(cell)
+		var plant_pos = Vector2.ZERO
+		if cell == 3 and cell_top == -1:
+			plant_pos = plant_seed(tilemap, aproximate_position)
+			print(plant_pos)
+		elif cell_top == 3 and cell_top_top == -1:
+			plant_pos = plant_seed(tilemap, aproximate_position_top)
+		if plant_pos.x != 0:
+			$E.show()
+			$E.global_position = plant_pos
 
 		
-		
+func plant_seed(tilemap, pos) -> Vector2:
+	var cell_size = tilemap.cell_size.x
+	var cell_pos = tilemap.world_to_map(pos)
+	var seed_pos = tilemap.map_to_world(cell_pos)
+	
+	var corrected_seed_pos = Vector2(seed_pos.x + cell_size/2, seed_pos.y + cell_size/2)
+	if Input.is_action_just_pressed("E"):
+		get_parent().plant_seed(corrected_seed_pos)
+	#print(cell_pos)
+	return Vector2(seed_pos.x + cell_size/2, seed_pos.y - cell_size/2)
 #	if Input.is_action_just_pressed("left_click"):
 #		print(0)
 #		var mouse_pos = get_global_mouse_position()
