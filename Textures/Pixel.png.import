@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tilese_dirtt.png-40e6d78a78385c6da9c5d5b455c92587.stex"
+path="res://.import/Pixel.png-8b2f3d63418d53812f0455234061a7ee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tilemaps/Tilese_dirtt.png"
-dest_files=[ "res://.import/Tilese_dirtt.png-40e6d78a78385c6da9c5d5b455c92587.stex" ]
+source_file="res://Textures/Pixel.png"
+dest_files=[ "res://.import/Pixel.png-8b2f3d63418d53812f0455234061a7ee.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
