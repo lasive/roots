@@ -7,6 +7,7 @@ export var jump_speed = -100
 export var gravity = 500
 var directionX = 1
 var planted = false
+var growing = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -31,9 +32,12 @@ func get_input(delta):
 		velocity.x -= sign(velocity.x)*speed
 	if abs(velocity.x) > maxSpeedX:
 		velocity.x = sign(velocity.x)*maxSpeedX
-		
+
+func stoped_grow():
+	growing = false
+	
 func _physics_process(delta: float) -> void:
-	if not planted:
+	if not growing:
 		get_input(delta)
 		
 		$E.hide()
@@ -86,6 +90,7 @@ func plant_seed(tilemap, pos) -> Vector2:
 	if Input.is_action_just_pressed("E"):
 		get_parent().plant_seed(corrected_seed_pos)
 		planted = true
+		growing = true
 		$Plant.hide()
 	#print(cell_pos)
 	return Vector2(seed_pos.x + cell_size/2, seed_pos.y - cell_size/2)
