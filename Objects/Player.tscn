@@ -3,10 +3,14 @@
 [ext_resource path="res://Textures/RootAvatar_Sprite.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Player.gd" type="Script" id=2]
 [ext_resource path="res://HUD/HUD.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Objects/seed.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Seed.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 4 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 8, 8 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -20,20 +24,16 @@ region = Rect2( 8, 0, 8, 8 )
 atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 8, 8 )
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 8, 8 )
-
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
 "name": "Stand",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Walk",
 "speed": 5.0
 } ]
 
@@ -61,6 +61,5 @@ frames = SubResource( 6 )
 animation = "Stand"
 
 [node name="Plant" type="Sprite" parent="AnimatedSprite"]
-position = Vector2( 5, 1 )
-scale = Vector2( 0.0413926, 0.0365795 )
+position = Vector2( 6, -4 )
 texture = ExtResource( 4 )
