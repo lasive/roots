@@ -10,6 +10,7 @@ export var plant_moves = 8
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 
@@ -36,3 +37,7 @@ func _on_Area2D_body_entered(body):
 func _on_Fall_body_entered(body):
 	if body.name == "player":
 		get_tree().reload_current_scene()
+
+
+func _on_Win_body_entered(body):
+	$txt.show()

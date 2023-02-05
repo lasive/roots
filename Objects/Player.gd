@@ -16,7 +16,8 @@ var growing = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite.play("Stand")
-	pass # Replace with function body.
+	$R.hide()
+	
 
 
 func get_input(delta):

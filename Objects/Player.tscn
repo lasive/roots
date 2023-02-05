@@ -58,6 +58,17 @@ rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/font = ExtResource( 3 )
 text = "E"
 
+[node name="R" type="Node2D" parent="."]
+
+[node name="R" type="Label" parent="R"]
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 52.0
+margin_bottom = 65.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = ExtResource( 3 )
+text = "R"
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Stand"

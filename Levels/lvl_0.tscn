@@ -71,11 +71,11 @@ jump_speed = -150
 gravity = 1000
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-offset = Vector2( 0, -20 )
+offset = Vector2( 0, -5 )
 current = true
 zoom = Vector2( 0.17, 0.17 )
 limit_left = -10
-limit_top = -8
+limit_top = 5
 limit_right = 200
 limit_bottom = 500
 drag_margin_h_enabled = true
@@ -116,7 +116,7 @@ shape = SubResource( 1 )
 [node name="Fall" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fall"]
-position = Vector2( 185, 143 )
+position = Vector2( 189, 181 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="Win" to="." method="_on_Area2D_body_entered"]
