@@ -29,6 +29,7 @@ jump_speed = -150
 gravity = 1000
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+offset = Vector2( 0, -20 )
 current = true
 zoom = Vector2( 0.17, 0.17 )
 limit_left = -10
