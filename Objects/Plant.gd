@@ -2,9 +2,10 @@ extends Node2D
 var current_stem_pos = Vector2(0,-1)
 var stems = []
 var growing = false
-export var groth_length = 8
+var groth_length = 0
 var groth_speed = 10
 var mouse_pos =  Vector2.ZERO
+var bad = true
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -13,7 +14,6 @@ var mouse_pos =  Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	stems.append(current_stem_pos)
-	groth_length -= 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,6 +27,11 @@ func _process(delta):
 		move_tile(Vector2(1, 0), $Rays/R_RIGHT)
 	elif Input.is_action_just_pressed("move_left"):
 		move_tile(Vector2(-1, 0), $Rays/R_LEFT)
+	elif Input.is_action_just_pressed("E") and bad == false:
+		groth_length = 0
+		get_parent().get_node("player").stoped_grow()
+	if bad == true:
+		bad = false
 		
 func move_tile(offset, ray):
 	var tilemap = get_node("TileMap")
@@ -68,3 +73,5 @@ func move_tile(offset, ray):
 #		current_stem_pos_start = current_stem_pos_end
 
 	
+func add_plant_moves(moves):
+	groth_length += moves
