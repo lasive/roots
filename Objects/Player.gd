@@ -15,6 +15,7 @@ var growing = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite.play("Stand")
 	pass # Replace with function body.
 
 
@@ -24,6 +25,7 @@ func get_input(delta):
 		velocity.x = 0
 	else:
 		directionX = sign(velocity.x)
+		$AnimatedSprite.scale.x = directionX
 	if Input.is_action_pressed("move_right"):
 		velocity.x += speed
 	elif Input.is_action_pressed("move_left"):
@@ -32,7 +34,12 @@ func get_input(delta):
 		velocity.x -= sign(velocity.x)*speed
 	if abs(velocity.x) > maxSpeedX:
 		velocity.x = sign(velocity.x)*maxSpeedX
-
+	
+	if abs(velocity.x) > 10:
+		$AnimatedSprite.play("Walk")
+	else:
+		$AnimatedSprite.play("Stand")
+		
 func stoped_grow():
 	growing = false
 	
@@ -57,9 +64,9 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			var tilemap = get_parent().get_node("TileMap")
 			var cell_size = tilemap.cell_size.x
-			var aproximate_position = Vector2(global_position.x + directionX*cell_size*1.5, global_position.y + cell_size)
-			var aproximate_position_top = Vector2(global_position.x + directionX*cell_size*1.5, global_position.y + cell_size - cell_size)
-			var aproximate_position_top_top = Vector2(global_position.x + directionX*cell_size*1.5, global_position.y + cell_size - cell_size - cell_size)
+			var aproximate_position = Vector2(global_position.x + directionX*cell_size*1.7, global_position.y + cell_size)
+			var aproximate_position_top = Vector2(global_position.x + directionX*cell_size*1.7, global_position.y + cell_size - cell_size)
+			var aproximate_position_top_top = Vector2(global_position.x + directionX*cell_size*1.7, global_position.y + cell_size - cell_size - cell_size)
 			
 			var cell = tilemap.get_cellv(tilemap.world_to_map(aproximate_position))
 			var cell_top = tilemap.get_cellv(tilemap.world_to_map(aproximate_position_top))
@@ -79,7 +86,8 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("E"):
 			get_parent().deplant()
 			planted = false
-			$Plant.show()
+			growing = false
+			$AnimatedSprite/Plant.show()
 		
 func plant_seed(tilemap, pos) -> Vector2:
 	var cell_size = tilemap.cell_size.x
@@ -91,7 +99,7 @@ func plant_seed(tilemap, pos) -> Vector2:
 		get_parent().plant_seed(corrected_seed_pos)
 		planted = true
 		growing = true
-		$Plant.hide()
+		$AnimatedSprite/Plant.hide()
 	#print(cell_pos)
 	return Vector2(seed_pos.x + cell_size/2, seed_pos.y - cell_size/2)
 #	if Input.is_action_just_pressed("left_click"):
