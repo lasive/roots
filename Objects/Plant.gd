@@ -2,7 +2,7 @@ extends Node2D
 var current_stem_pos = Vector2(0,-1)
 var stems = []
 var growing = false
-var groth_length = 9
+export var groth_length = 8
 var groth_speed = 10
 var mouse_pos =  Vector2.ZERO
 # Declare member variables here. Examples:
