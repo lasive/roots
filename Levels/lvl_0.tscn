@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tilemaps/DirtAutoTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Flys.tres" type="Material" id=2]
@@ -77,7 +77,7 @@ zoom = Vector2( 0.17, 0.17 )
 limit_left = -10
 limit_top = -8
 limit_right = 200
-limit_bottom = 160
+limit_bottom = 500
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
@@ -116,7 +116,7 @@ shape = SubResource( 1 )
 [node name="Fall" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fall"]
-position = Vector2( 107, 155 )
+position = Vector2( 185, 143 )
 shape = SubResource( 2 )
 
 [connection signal="body_entered" from="Win" to="." method="_on_Area2D_body_entered"]
