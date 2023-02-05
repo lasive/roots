@@ -3,7 +3,7 @@ var velocity = Vector2.ZERO
 export var speed = 20
 export var maxSpeedY = 1000
 export var maxSpeedX = 100
-export var jump_speed = -100
+export var jump_speed = -200
 export var gravity = 500
 var directionX = 1
 var planted = false
@@ -21,7 +21,7 @@ func _ready():
 
 func get_input(delta):
 	
-	if abs(velocity.x) < 10:
+	if abs(velocity.x) < 5:
 		velocity.x = 0
 	else:
 		directionX = sign(velocity.x)
