@@ -1,6 +1,7 @@
 extends Node2D
 var plant_scene = preload("res://Objects/Plant.tscn")
 var plant = null
+export var next_scene = "res://Levels/lvl_1.tscn"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -23,3 +24,13 @@ func plant_seed(tile_pos):
 
 func deplant():
 	plant.queue_free()
+
+
+func _on_Area2D_body_entered(body):
+	if body.name == "player":
+		get_tree().change_scene(next_scene)
+
+
+func _on_Fall_body_entered(body):
+	if body.name == "player":
+		get_tree().reload_current_scene()
