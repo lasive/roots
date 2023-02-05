@@ -10,4 +10,4 @@ func _on_BackButton_pressed():
 
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://MainScene.tscn")
+	get_tree().change_scene("res://Levels/lvl_0.tscn")

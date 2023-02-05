@@ -14,39 +14,35 @@ var mouse_pos =  Vector2.ZERO
 func _ready():
 	stems.append(current_stem_pos)
 	groth_length -= 1
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if groth_length <= 0:
 		return
 	if Input.is_action_just_pressed("move_up"):
-		move_tile(Vector2(0, -1))
+		move_tile(Vector2(0, -1), $Rays/R_UP)
 	elif Input.is_action_just_pressed("move_down"):
-		move_tile(Vector2(0, 1))
+		move_tile(Vector2(0, 1), $Rays/R_DOWN)
 	elif Input.is_action_just_pressed("move_right"):
-		move_tile(Vector2(1, 0))
+		move_tile(Vector2(1, 0), $Rays/R_RIGHT)
 	elif Input.is_action_just_pressed("move_left"):
-		move_tile(Vector2(-1, 0))
+		move_tile(Vector2(-1, 0), $Rays/R_LEFT)
 		
-func move_tile(offset):
+func move_tile(offset, ray):
 	var tilemap = get_node("TileMap")
 	var tile_pos = current_stem_pos + offset
-	if tilemap.get_cellv(tile_pos) == -1:
-		$RayCast2D.position = tilemap.map_to_world(tile_pos)
-		var collision = $RayCast2D.is_colliding()
-		
-		
-		
-		if collision == true:
-			
-			current_stem_pos = tile_pos
-			var cell = tilemap.get_cellv(tile_pos)
-			tilemap.set_cellv(tile_pos, 0)
-			tilemap.update_bitmask_region()
-			groth_length -= 1
-			if groth_length <=0:
-				get_parent().get_node("player").stoped_grow()
+	ray.force_update_transform()
+	print(ray.get_collider())
+	if ray.is_colliding() == false and tilemap.get_cellv(tile_pos) == -1:
+		print(1)
+		current_stem_pos = tile_pos
+		var cell = tilemap.get_cellv(tile_pos)
+		tilemap.set_cellv(tile_pos, 0)
+		tilemap.update_bitmask_region()
+		groth_length -= 1
+		$Rays.position = tilemap.map_to_world(current_stem_pos)
+		if groth_length <=0:
+			get_parent().get_node("player").stoped_grow()
 		
 		
 #	if Input.is_action_pressed("left_click"):
