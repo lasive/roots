@@ -83,13 +83,14 @@ func _physics_process(delta: float) -> void:
 				$E.show()
 				$E.global_position = plant_pos
 	else:
-		$E.show()
-		$E.position = Vector2(5,0)
-		if Input.is_action_just_pressed("E"):
+		#$E.show()
+		#$E.position = Vector2(5,0)
+		if Input.is_action_just_pressed("E") and not growing:
 			get_parent().deplant()
 			planted = false
 			growing = false
 			$AnimatedSprite/Plant.show()
+			
 		
 func plant_seed(tilemap, pos) -> Vector2:
 	var cell_size = tilemap.cell_size.x
@@ -102,6 +103,8 @@ func plant_seed(tilemap, pos) -> Vector2:
 		planted = true
 		growing = true
 		$AnimatedSprite/Plant.hide()
+		$E.hide()
+		return Vector2(0, 0)
 	#print(cell_pos)
 	return Vector2(seed_pos.x + cell_size/2, seed_pos.y - cell_size/2)
 #	if Input.is_action_just_pressed("left_click"):

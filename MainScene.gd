@@ -2,6 +2,7 @@ extends Node2D
 var plant_scene = preload("res://Objects/Plant.tscn")
 var plant = null
 export var next_scene = "res://Levels/lvl_1.tscn"
+export var plant_moves = 8
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -21,6 +22,7 @@ func plant_seed(tile_pos):
 	add_child(p)
 	p.global_position = tile_pos
 	plant = p
+	plant.add_plant_moves(plant_moves)
 
 func deplant():
 	plant.queue_free()
